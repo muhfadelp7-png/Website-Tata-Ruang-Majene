@@ -26,7 +26,7 @@
             scroll-behavior: smooth;
         }
 
-        /* Background hitam dengan grain futuristik + sentuhan kuning */
+        /* Background hitam dengan grain futuristik + SENTUHAN KONTUR TOPOGRAFI */
         .bg-futuristic {
             position: fixed;
             top: 0;
@@ -37,6 +37,7 @@
             background: radial-gradient(circle at 30% 20%, #0a0a0a, #000000);
         }
 
+        /* LAYER KONTUR - GAMBAR CORAK GARIS KONTUR DINAMIS & MODERN */
         .bg-futuristic::before {
             content: "";
             position: absolute;
@@ -47,7 +48,29 @@
             pointer-events: none;
         }
 
-        /* Garis aksen kuning berjalan */
+        /* KONTUR GARIS TOPOGRAFI YANG LEBIH BESAR DAN FUTURISTIK */
+        .contour-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 800'%3E%3Cpath fill='none' stroke='%23FACC15' stroke-width='0.8' stroke-opacity='0.15' d='M100,100 Q250,80 350,150 T550,200 T750,180 T950,220 T1100,250'/%3E%3Cpath fill='none' stroke='%23FACC15' stroke-width='0.8' stroke-opacity='0.15' d='M100,130 Q260,110 370,180 T560,230 T770,210 T970,250 T1120,280'/%3E%3Cpath fill='none' stroke='%23FACC15' stroke-width='0.8' stroke-opacity='0.15' d='M100,160 Q270,140 390,210 T580,260 T790,240 T990,280 T1120,310'/%3E%3Cpath fill='none' stroke='%23FACC15' stroke-width='0.8' stroke-opacity='0.15' d='M100,190 Q280,170 410,240 T600,290 T810,270 T1010,310 T1120,340'/%3E%3Cpath fill='none' stroke='%23FACC15' stroke-width='0.8' stroke-opacity='0.15' d='M100,220 Q290,200 430,270 T620,320 T830,300 T1030,340 T1120,370'/%3E%3Cpath fill='none' stroke='%23FACC15' stroke-width='0.8' stroke-opacity='0.15' d='M100,250 Q300,230 450,300 T640,350 T850,330 T1050,370 T1120,400'/%3E%3Cpath fill='none' stroke='%23FACC15' stroke-width='0.8' stroke-opacity='0.15' d='M150,400 Q300,380 420,430 T600,470 T800,450 T980,490 T1100,520'/%3E%3Cpath fill='none' stroke='%23FACC15' stroke-width='0.8' stroke-opacity='0.15' d='M150,430 Q310,410 440,460 T620,500 T820,480 T1000,520 T1100,550'/%3E%3Cpath fill='none' stroke='%23FACC15' stroke-width='0.8' stroke-opacity='0.15' d='M150,460 Q320,440 460,490 T640,530 T840,510 T1020,550 T1100,580'/%3E%3Cpath fill='none' stroke='%23FACC15' stroke-width='0.8' stroke-opacity='0.15' d='M150,490 Q330,470 480,520 T660,560 T860,540 T1040,580 T1100,610'/%3E%3Cpath fill='none' stroke='%23FACC15' stroke-width='0.8' stroke-opacity='0.15' d='M150,520 Q340,500 500,550 T680,590 T880,570 T1060,610 T1100,640'/%3E%3Cpath fill='none' stroke='%23FACC15' stroke-width='0.8' stroke-opacity='0.15' d='M150,550 Q350,530 520,580 T700,620 T900,600 T1080,640 T1100,670'/%3E%3Cpath fill='none' stroke='%23FACC15' stroke-width='1.2' stroke-opacity='0.2' d='M50,700 Q200,650 350,680 T550,650 T750,700 T950,680 T1150,720'/%3E%3Cpath fill='none' stroke='%23FACC15' stroke-width='1.2' stroke-opacity='0.2' d='M50,730 Q210,680 370,710 T570,680 T770,730 T970,710 T1150,750'/%3E%3Cpath fill='none' stroke='%23FACC15' stroke-width='1.2' stroke-opacity='0.2' d='M50,760 Q220,710 390,740 T590,710 T790,760 T990,740 T1150,780'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            animation: subtleMove 30s linear infinite alternate;
+        }
+
+        /* efek pergerakan halus kontur */
+        @keyframes subtleMove {
+            0% { transform: scale(1) translateX(0) translateY(0); opacity: 0.6; }
+            100% { transform: scale(1.05) translateX(1%) translateY(1%); opacity: 0.9; }
+        }
+
+        /* GARIS AKTIF (glow line) */
         .glow-line {
             position: fixed;
             top: 0;
@@ -72,7 +95,7 @@
             z-index: 2;
         }
 
-        /* Navbar dengan dominasi hitam dan aksen kuning */
+        /* Navbar */
         .navbar {
             display: flex;
             justify-content: space-between;
@@ -141,7 +164,6 @@
             text-shadow: 0 0 6px #FACC15;
         }
 
-        /* Hero */
         .hero {
             padding: 70px 0 40px;
             text-align: center;
@@ -164,7 +186,6 @@
             color: #CCCCCC;
         }
 
-        /* Glass Card dengan dominasi hitam & border kuning */
         .glass-card {
             background: rgba(0, 0, 0, 0.65);
             backdrop-filter: blur(14px);
@@ -174,7 +195,6 @@
             transition: all 0.3s ease;
         }
 
-        /* TUPOKSI */
         .tupoksi-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -215,7 +235,6 @@
             line-height: 1.5;
         }
 
-        /* Apps Grid */
         .apps-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
@@ -261,7 +280,6 @@
             color: #000000;
         }
 
-        /* Peta Kantor */
         .map-container {
             margin: 30px 0 40px;
             border-radius: 2rem;
@@ -276,7 +294,6 @@
             background: #111;
         }
 
-        /* Info panel custom */
         .info-panel {
             display: flex;
             flex-wrap: wrap;
@@ -323,6 +340,7 @@
             .container { padding: 0 20px; }
             .navbar { flex-direction: column; align-items: center; }
             .hero h1 { font-size: 2.3rem; }
+            .contour-overlay { background-size: cover; }
         }
 
         ::-webkit-scrollbar { width: 5px; }
@@ -333,6 +351,8 @@
 <body>
 
 <div class="bg-futuristic"></div>
+<!-- LAYER KONTUR TOPOGRAFI MODERN -->
+<div class="contour-overlay"></div>
 <div class="glow-line"></div>
 <div class="floating-shape"></div>
 
@@ -342,7 +362,7 @@
         <div class="logo-area">
             <div class="logo-item">
                 <img src="gambar/gambar/gambar_1.png" alt="Logo Kab. Majene" onerror="this.style.display='none';" style="height: 48px;">
-                <div class="logo-text">KAB. MAJENE<br><small>Bumi Mekkada Tangnga</small></div>
+                <div class="logo-text">KAB. MAJENE<br><small>Pemerintah Kab. Majene</small></div>
             </div>
             <div class="logo-item">
                 <img src="gambar/gambar/gambar_2.png" alt="Logo PUPR" style="height: 48px;">
@@ -364,7 +384,7 @@
         <div class="sub">Dinas PUPR | Inovasi Tata Ruang, GIS & Arsip Digital Berbasis Wilayah</div>
     </div>
 
-    <!-- ================= TUPOKSI BIDANG TATA RUANG ================= -->
+    <!-- TUPOKSI BIDANG TATA RUANG -->
     <div id="tupoksi" data-aos="fade-right">
         <h2 style="font-size: 2rem; margin-bottom: 20px; border-left: 5px solid #FACC15; padding-left: 20px; color:#FACC15;">Tugas & Fungsi Bidang Tata Ruang</h2>
         <div class="tupoksi-grid">
@@ -391,7 +411,7 @@
         </div>
     </div>
 
-    <!-- APLIKASI UNGGULAN: SIPAMANDAR GIS & Sistem Arsip -->
+    <!-- APLIKASI UNGGULAN -->
     <div id="layanan" class="apps-grid">
         <div class="glass-card app-card" data-aos="flip-left">
             <i class="fas fa-map-marked-alt" style="font-size: 3rem; background: linear-gradient(145deg, #FACC15, #FFD966); background-clip: text; -webkit-background-clip: text; color: transparent;"></i>
@@ -414,7 +434,7 @@
         <div class="info-item"><div class="info-number">24/7</div><div>Akses Modern</div></div>
     </div>
 
-    <!-- ================= PETA LOKASI KANTOR PUPR MAJENE (LOKASI BENAR) ================= -->
+    <!-- PETA LOKASI KANTOR PUPR MAJENE -->
     <div id="peta-lokasi" data-aos="fade-up">
         <h2 style="font-size: 1.8rem; margin-bottom: 20px; border-left: 5px solid #FACC15; padding-left: 20px; color:#FACC15;"><i class="fas fa-map-pin"></i> Peta Lokasi Kantor Dinas PUPR Kab. Majene</h2>
         <div class="glass-card map-container">
@@ -432,7 +452,7 @@
         <p style="margin: 12px 0; color:#DDD;">Jl. Jenderal Sudirman No. 45, Banggae, Kab. Majene, Sulawesi Barat 91411</p>
         <div style="display: flex; gap: 20px; justify-content: center; margin-top: 20px; flex-wrap:wrap;">
             <span><i class="fas fa-phone-alt"></i> (0422) 22145</span>
-            <span><i class="fas fa-envelope"></i> pupr@majenekab.go.id</span>
+            <span><i class="fas fa-envelope"></i> petarungmajene@gmail.com</span>
         </div>
         <div style="margin-top: 24px;">
             <a href="#" style="color:#FACC15; margin: 0 12px;"><i class="fab fa-twitter"></i></a>
@@ -455,9 +475,7 @@
 <script>
     AOS.init({ duration: 900, once: true });
 
-    // ========= PERBAIKAN LOKASI KANTOR PUPR MAJENE (Koordinat akurat berdasarkan alamt Jl. Jenderal Sudirman, Banggae) =========
-    // Koordinat sekitar kompleks perkantoran Pemda Majene: -3.5403, 118.9647 (disesuaikan lebih presisi)
-    // Berdasarkan referensi Kantor Bupati Majene / area perkantoran PUPR berada di sekitar Jl. Sudirman. Pakai -3.5405, 118.9650
+    // Koordinat Kantor PUPR Majene (Jl. Jenderal Sudirman, Banggae)
     var kantorLatLng = [-3.5405, 118.9650];
     var map = L.map('map-kantor').setView(kantorLatLng, 17);
     
@@ -488,7 +506,7 @@
         radius: 200
     }).addTo(map);
     
-    // Tambahan polyline dekoratif (garis dinamis)
+    // Tambahan polyline dekoratif
     var latlngs = [
         [-3.5390, 118.9640],
         [-3.5405, 118.9650],
