@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>PUPR Majene | Tata Ruang | Yellow-Black Futuristik</title>
+    <!-- Font & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Leaflet CSS (Peta) -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #030303;
+            color: #F5F5F5;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* Background hitam dengan grain futuristik + sentuhan kuning */
+        .bg-futuristic {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background: radial-gradient(circle at 30% 20%, #0a0a0a, #000000);
+        }
+
+        .bg-futuristic::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MCIgaGVpZ2h0PSI4MCIgdmlld0JveD0iMCAwIDQwIDQwIj48cGF0aCBmaWxsPSIjZmZkYzAwIiBmaWxsLW9wYWNpdHk9IjAuMDMiIGQ9Ik0wIDBoMXYxSDB6bTQgMGgxdjFINHpNMTAgMGgxdjFIMTB6bTQgMGgxdjFINHpNMjAgMGgxdjFIMjB6bTQgMGgxdjFINHpNMzAgMGgxdjFIMzB6bTQgMGgxdjFINHpNMCA0aDF2MUgwek00IDRoMXYxSDR6TTEwIDRoMXYxSDEwek0xNCA0aDF2MUgxNHpNMjAgNGgxdjFIMjB6TTI0IDRoMXYxSDI0ek0zMCA0aDF2MUgzMHpNMzQgNGgxdjFIMzR6TTAgMTBoMXYxSDB6TTQgMTBoMXYxSDR6TTEwIDEwaDF2MUgxMHpNMTQgMTBoMXYxSDE0ek0yMCAxMGgxdjFIMjB6TTI0IDEwaDF2MUgyNHpNMzAgMTBoMXYxSDMwek0zNCAxMGgxdjFIMzR6TTAgMTRoMXYxSDB6TTQgMTRoMXYxSDR6TTEwIDE0aDF2MUgxMHpNMTQgMTRoMXYxSDE0ek0yMCAxNGgxdjFIMjB6TTI0IDE0aDF2MUgyNHpNMzAgMTRoMXYxSDMwek0zNCAxNGgxdjFIMzR6Ii8+PC9zdmc+');
+            opacity: 0.2;
+            pointer-events: none;
+        }
+
+        /* Garis aksen kuning berjalan */
+        .glow-line {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #FACC15, #EAB308, #FDE047, transparent);
+            z-index: 1000;
+            animation: scanline 7s linear infinite;
+        }
+
+        @keyframes scanline {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 32px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Navbar dengan dominasi hitam dan aksen kuning */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 24px 0 20px;
+            flex-wrap: wrap;
+            gap: 20px;
+            border-bottom: 1px solid rgba(250, 204, 21, 0.4);
+            backdrop-filter: blur(5px);
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .logo-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(8px);
+            padding: 8px 20px;
+            border-radius: 60px;
+            border: 1px solid rgba(250, 204, 21, 0.6);
+            transition: 0.3s;
+        }
+
+        .logo-item img {
+            height: 48px;
+            width: auto;
+            filter: drop-shadow(0 0 6px rgba(250, 204, 21, 0.7));
+        }
+
+        .logo-text {
+            font-weight: 700;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            color: #FACC15;
+        }
+
+        .logo-text small {
+            font-size: 0.7rem;
+            font-weight: 400;
+            opacity: 0.8;
+            color: #DDD;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+        }
+
+        .nav-links a {
+            color: #F5F5F5;
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.2s;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #FACC15;
+            text-shadow: 0 0 6px #FACC15;
+        }
+
+        /* Hero */
+        .hero {
+            padding: 70px 0 40px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #FACC15, #FFD966, #FDE047);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            letter-spacing: -0.02em;
+        }
+
+        .hero .sub {
+            font-size: 1.2rem;
+            margin-top: 20px;
+            opacity: 0.85;
+            color: #CCCCCC;
+        }
+
+        /* Glass Card dengan dominasi hitam & border kuning */
+        .glass-card {
+            background: rgba(0, 0, 0, 0.65);
+            backdrop-filter: blur(14px);
+            border-radius: 2rem;
+            border: 1px solid rgba(250, 204, 21, 0.4);
+            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.8), 0 0 0 1px rgba(250,204,21,0.1);
+            transition: all 0.3s ease;
+        }
+
+        /* TUPOKSI */
+        .tupoksi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 28px;
+            margin: 40px 0 60px;
+        }
+
+        .tupoksi-card {
+            padding: 28px 24px;
+            text-align: left;
+            transition: transform 0.3s, border-color 0.2s;
+        }
+
+        .tupoksi-card:hover {
+            transform: translateY(-8px);
+            border-color: #FACC15;
+            box-shadow: 0 0 18px rgba(250,204,21,0.2);
+        }
+
+        .tupoksi-icon {
+            font-size: 2.2rem;
+            background: linear-gradient(145deg, #FACC15, #EAB308);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-bottom: 16px;
+        }
+
+        .tupoksi-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+            font-weight: 700;
+            color: #FACC15;
+        }
+
+        .tupoksi-card p {
+            color: #D1D5DB;
+            line-height: 1.5;
+        }
+
+        /* Apps Grid */
+        .apps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 30px;
+            margin: 60px 0 70px;
+        }
+
+        .app-card {
+            padding: 28px 24px 34px;
+            text-align: center;
+        }
+
+        .app-card:hover {
+            transform: translateY(-12px);
+            border-color: #FACC15;
+            box-shadow: 0 25px 35px -12px rgba(250,204,21,0.25);
+        }
+
+        .btn-future {
+            background: #000000;
+            border: 1.5px solid #FACC15;
+            padding: 12px 28px;
+            border-radius: 40px;
+            font-weight: 700;
+            color: #FACC15;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            transition: 0.25s;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-future:hover {
+            background: #FACC15;
+            color: #000000;
+            box-shadow: 0 0 16px #FACC15;
+            gap: 16px;
+            border-color: #FACC15;
+        }
+
+        .btn-future:hover i {
+            color: #000000;
+        }
+
+        /* Peta Kantor */
+        .map-container {
+            margin: 30px 0 40px;
+            border-radius: 2rem;
+            overflow: hidden;
+            border: 1px solid rgba(250,204,21,0.6);
+            box-shadow: 0 20px 30px -10px rgba(0,0,0,0.7);
+        }
+
+        #map-kantor {
+            height: 400px;
+            width: 100%;
+            background: #111;
+        }
+
+        /* Info panel custom */
+        .info-panel {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 2rem;
+            padding: 28px 32px;
+            margin: 30px 0 50px;
+            border: 1px solid rgba(250,204,21,0.4);
+        }
+
+        .info-number {
+            font-size: 2rem;
+            font-weight: 800;
+            background: linear-gradient(115deg, #FACC15, #FFE484);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .footer {
+            border-top: 1px solid rgba(250,204,21,0.3);
+            padding: 40px 0 30px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #AAA;
+        }
+
+        .floating-shape {
+            position: fixed;
+            z-index: -1;
+            opacity: 0.1;
+            filter: blur(80px);
+            border-radius: 50%;
+            background: radial-gradient(circle, #FACC15, #EAB308);
+            width: 450px;
+            height: 450px;
+            bottom: -150px;
+            right: -150px;
+        }
+
+        @media (max-width: 780px) {
+            .container { padding: 0 20px; }
+            .navbar { flex-direction: column; align-items: center; }
+            .hero h1 { font-size: 2.3rem; }
+        }
+
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-track { background: #0a0a0a; }
+        ::-webkit-scrollbar-thumb { background: #FACC15; border-radius: 10px; }
+    </style>
+</head>
+<body>
+
+<div class="bg-futuristic"></div>
+<div class="glow-line"></div>
+<div class="floating-shape"></div>
+
+<div class="container">
+    <!-- Navbar -->
+    <div class="navbar" data-aos="fade-down">
+        <div class="logo-area">
+            <div class="logo-item">
+                <img src="gambar/gambar/gambar_1.png" alt="Logo Kab. Majene" onerror="this.style.display='none';" style="height: 48px;">
+                <div class="logo-text">KAB. MAJENE<br><small>Bumi Mekkada Tangnga</small></div>
+            </div>
+            <div class="logo-item">
+                <img src="gambar/gambar/gambar_2.png" alt="Logo PUPR" style="height: 48px;">
+                <div class="logo-text">DINAS PUPR<br><small>Penataan Ruang</small></div>
+            </div>
+        </div>
+        <div class="nav-links">
+            <a href="#home">Beranda</a>
+            <a href="#tupoksi">Tupoksi</a>
+            <a href="#layanan">Sistem</a>
+            <a href="#peta-lokasi">Peta Kantor</a>
+            <a href="#kontak">Kontak</a>
+        </div>
+    </div>
+
+    <!-- Hero -->
+    <div id="home" class="hero" data-aos="fade-up">
+        <h1>Penataan Ruang Digital<br>Kabupaten Majene</h1>
+        <div class="sub">Dinas PUPR | Inovasi Tata Ruang, GIS & Arsip Digital Berbasis Wilayah</div>
+    </div>
+
+    <!-- ================= TUPOKSI BIDANG TATA RUANG ================= -->
+    <div id="tupoksi" data-aos="fade-right">
+        <h2 style="font-size: 2rem; margin-bottom: 20px; border-left: 5px solid #FACC15; padding-left: 20px; color:#FACC15;">Tugas & Fungsi Bidang Tata Ruang</h2>
+        <div class="tupoksi-grid">
+            <div class="glass-card tupoksi-card" data-aos="zoom-in">
+                <div class="tupoksi-icon"><i class="fas fa-draw-polygon"></i></div>
+                <h3>Perencanaan Tata Ruang</h3>
+                <p>Penyusunan RTRW Kabupaten, RDTR, serta koordinasi kebijakan spasial berkelanjutan untuk Majene.</p>
+            </div>
+            <div class="glass-card tupoksi-card" data-aos="zoom-in" data-aos-delay="100">
+                <div class="tupoksi-icon"><i class="fas fa-chart-line"></i></div>
+                <h3>Pengendalian Pemanfaatan Ruang</h3>
+                <p>Pengawasan izin, kepatuhan zonasi, penertiban pelanggaran tata ruang, dan optimalisasi lingkungan.</p>
+            </div>
+            <div class="glass-card tupoksi-card" data-aos="zoom-in" data-aos-delay="200">
+                <div class="tupoksi-icon"><i class="fas fa-map-marked-alt"></i></div>
+                <h3>Sistem Informasi Geospasial</h3>
+                <p>Pengelolaan data geospasial, peta interaktif SIPAMANDAR GIS, informasi spasial untuk publik.</p>
+            </div>
+            <div class="glass-card tupoksi-card" data-aos="zoom-in" data-aos-delay="300">
+                <div class="tupoksi-icon"><i class="fas fa-archive"></i></div>
+                <h3>Arsip & Dokumentasi Ruang</h3>
+                <p>Digitalisasi dokumen peraturan, peta dasar, dan arsip tata ruang untuk tata kelola terintegrasi.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- APLIKASI UNGGULAN: SIPAMANDAR GIS & Sistem Arsip -->
+    <div id="layanan" class="apps-grid">
+        <div class="glass-card app-card" data-aos="flip-left">
+            <i class="fas fa-map-marked-alt" style="font-size: 3rem; background: linear-gradient(145deg, #FACC15, #FFD966); background-clip: text; -webkit-background-clip: text; color: transparent;"></i>
+            <h3 style="color:#FACC15;">SIPAMANDAR GIS</h3>
+            <div class="app-desc" style="color:#DDD;">Pemetaan interaktif, layer zonasi, infrastruktur dan potensi wilayah Majene real-time.</div>
+            <a href="https://petarung-majene.vercel.app/" target="_blank" class="btn-future">Jelajahi Peta <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="glass-card app-card" data-aos="flip-right">
+            <i class="fas fa-archive" style="font-size: 3rem; background: linear-gradient(145deg, #FACC15, #EAB308); background-clip: text; -webkit-background-clip: text; color: transparent;"></i>
+            <h3 style="color:#FACC15;">Sistem Arsip Tata Ruang</h3>
+            <div class="app-desc" style="color:#DDD;">Dokumen perencanaan, peraturan zonasi, kebijakan tata ruang Kab. Majene dalam portal digital.</div>
+            <a href="https://arsip-majene.vercel.app/" target="_blank" class="btn-future">Telusuri Arsip <i class="fas fa-external-link-alt"></i></a>
+        </div>
+    </div>
+
+    <!-- Info Statistik -->
+    <div class="info-panel" data-aos="fade-up">
+        <div class="info-item"><div class="info-number">2</div><div>Sistem Digital Terintegrasi</div></div>
+        <div class="info-item"><div class="info-number">10+</div><div>Layer Spasial & Arsip</div></div>
+        <div class="info-item"><div class="info-number">24/7</div><div>Akses Modern</div></div>
+    </div>
+
+    <!-- ================= PETA LOKASI KANTOR PUPR MAJENE (LOKASI BENAR) ================= -->
+    <div id="peta-lokasi" data-aos="fade-up">
+        <h2 style="font-size: 1.8rem; margin-bottom: 20px; border-left: 5px solid #FACC15; padding-left: 20px; color:#FACC15;"><i class="fas fa-map-pin"></i> Peta Lokasi Kantor Dinas PUPR Kab. Majene</h2>
+        <div class="glass-card map-container">
+            <div id="map-kantor"></div>
+        </div>
+        <p style="text-align: center; margin-top: 12px; font-size: 0.9rem; background: rgba(0,0,0,0.5); display: inline-block; width:100%; padding: 8px; border-radius: 50px;">
+            <i class="fas fa-location-dot" style="color:#FACC15;"></i> <strong>Alamat Kantor:</strong> Jl. Jenderal Sudirman No. 45, Kecamatan Banggae, Kabupaten Majene, Sulawesi Barat 91411 (Kompleks Perkantoran Pemda Majene)
+        </p>
+    </div>
+
+    <!-- Kontak & Footer -->
+    <div id="kontak" class="glass-card" style="padding: 40px 30px; margin: 50px 0 40px; text-align: center;" data-aos="zoom-in">
+        <i class="fas fa-building" style="font-size: 2.4rem; margin-bottom: 10px; color: #FACC15;"></i>
+        <h3 style="color:#FACC15;">Dinas Pekerjaan Umum dan Penataan Ruang Kabupaten Majene</h3>
+        <p style="margin: 12px 0; color:#DDD;">Jl. Jenderal Sudirman No. 45, Banggae, Kab. Majene, Sulawesi Barat 91411</p>
+        <div style="display: flex; gap: 20px; justify-content: center; margin-top: 20px; flex-wrap:wrap;">
+            <span><i class="fas fa-phone-alt"></i> (0422) 22145</span>
+            <span><i class="fas fa-envelope"></i> pupr@majenekab.go.id</span>
+        </div>
+        <div style="margin-top: 24px;">
+            <a href="#" style="color:#FACC15; margin: 0 12px;"><i class="fab fa-twitter"></i></a>
+            <a href="#" style="color:#FACC15; margin: 0 12px;"><i class="fab fa-instagram"></i></a>
+            <a href="#" style="color:#FACC15; margin: 0 12px;"><i class="fab fa-github"></i></a>
+        </div>
+    </div>
+
+    <div class="footer">
+        © 2026 Dinas PUPR Kab. Majene - Portal Tata Ruang Masa Depan | SIPAMANDAR GIS & Arsip Digital Tata Ruang <br>
+        Sinergi untuk Majene yang Tertata, Modern, dan Berkelanjutan.
+    </div>
+</div>
+
+<!-- Leaflet JS -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<!-- AOS JS -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+<script>
+    AOS.init({ duration: 900, once: true });
+
+    // ========= PERBAIKAN LOKASI KANTOR PUPR MAJENE (Koordinat akurat berdasarkan alamt Jl. Jenderal Sudirman, Banggae) =========
+    // Koordinat sekitar kompleks perkantoran Pemda Majene: -3.5403, 118.9647 (disesuaikan lebih presisi)
+    // Berdasarkan referensi Kantor Bupati Majene / area perkantoran PUPR berada di sekitar Jl. Sudirman. Pakai -3.5405, 118.9650
+    var kantorLatLng = [-3.5405, 118.9650];
+    var map = L.map('map-kantor').setView(kantorLatLng, 17);
+    
+    // Tile layer gaya gelap agar cocok dengan tema hitam-kuning
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> & CartoDB',
+        subdomains: 'abcd',
+        maxZoom: 19
+    }).addTo(map);
+    
+    // Marker custom dengan tema kuning-hitam
+    var customIcon = L.divIcon({
+        html: '<div style="background: #000000; border-radius: 50%; border: 3px solid #FACC15; padding: 8px; box-shadow: 0 0 20px #FACC15;"><i class="fas fa-building" style="color: #FACC15; font-size: 20px;"></i></div>',
+        iconSize: [40, 40],
+        className: 'custom-marker-pupr'
+    });
+    
+    var marker = L.marker(kantorLatLng, { icon: customIcon }).addTo(map);
+    marker.bindPopup("<b style='color:#FACC15;'>DINAS PUPR KAB. MAJENE</b><br/>Jl. Jenderal Sudirman No. 45, Banggae<br/>Kantor Penataan Ruang & Cipta Karya").openPopup();
+    
+    // Menambahkan lingkaran radius aksen kuning
+    L.circle(kantorLatLng, {
+        color: '#FACC15',
+        weight: 2,
+        opacity: 0.8,
+        fillOpacity: 0.1,
+        fillColor: '#FACC15',
+        radius: 200
+    }).addTo(map);
+    
+    // Tambahan polyline dekoratif (garis dinamis)
+    var latlngs = [
+        [-3.5390, 118.9640],
+        [-3.5405, 118.9650],
+        [-3.5415, 118.9662]
+    ];
+    L.polyline(latlngs, { color: '#FACC15', weight: 2, opacity: 0.5, dashArray: '5, 8' }).addTo(map);
+    
+    // Fallback logo jika image error
+    document.querySelectorAll('img').forEach(img => {
+        img.addEventListener('error', function() {
+            if(this.src.includes('Logo_Kabupaten_Majene') || this.src.includes('Logo_Kementerian_PUPR')) {
+                let fallbackDiv = document.createElement('i');
+                fallbackDiv.className = 'fas fa-landmark';
+                fallbackDiv.style.fontSize = '40px';
+                fallbackDiv.style.color = '#FACC15';
+                let parent = this.closest('.logo-item');
+                if(parent) {
+                    this.style.display = 'none';
+                    parent.insertBefore(fallbackDiv, this);
+                }
+            }
+        });
+    });
+    
+    // Smooth scroll internal
+    document.querySelectorAll('.nav-links a').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
+            if(href && href.startsWith('#') && href.length > 1) {
+                e.preventDefault();
+                const targetId = href.substring(1);
+                const targetElem = document.getElementById(targetId);
+                if(targetElem) {
+                    targetElem.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            }
+        });
+    });
+</script>
+</body>
+</html>
