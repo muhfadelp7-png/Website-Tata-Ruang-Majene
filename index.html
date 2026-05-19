@@ -26,7 +26,7 @@
             scroll-behavior: smooth;
         }
 
-        /* Background hitam dengan grain futuristik + SENTUHAN KONTUR TOPOGRAFI */
+        /* Background hitam dengan kontur topografi futuristik */
         .bg-futuristic {
             position: fixed;
             top: 0;
@@ -37,18 +37,6 @@
             background: radial-gradient(circle at 30% 20%, #0a0a0a, #000000);
         }
 
-        /* LAYER KONTUR - GAMBAR CORAK GARIS KONTUR DINAMIS & MODERN */
-        .bg-futuristic::before {
-            content: "";
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MCIgaGVpZ2h0PSI4MCIgdmlld0JveD0iMCAwIDQwIDQwIj48cGF0aCBmaWxsPSIjZmZkYzAwIiBmaWxsLW9wYWNpdHk9IjAuMDMiIGQ9Ik0wIDBoMXYxSDB6bTQgMGgxdjFINHpNMTAgMGgxdjFIMTB6bTQgMGgxdjFINHpNMjAgMGgxdjFIMjB6bTQgMGgxdjFINHpNMzAgMGgxdjFIMzB6bTQgMGgxdjFINHpNMCA0aDF2MUgwek00IDRoMXYxSDR6TTEwIDRoMXYxSDEwek0xNCA0aDF2MUgxNHpNMjAgNGgxdjFIMjB6TTI0IDRoMXYxSDI0ek0zMCA0aDF2MUgzMHpNMzQgNGgxdjFIMzR6TTAgMTBoMXYxSDB6TTQgMTBoMXYxSDR6TTEwIDEwaDF2MUgxMHpNMTQgMTBoMXYxSDE0ek0yMCAxMGgxdjFIMjB6TTI0IDEwaDF2MUgyNHpNMzAgMTBoMXYxSDMwek0zNCAxMGgxdjFIMzR6TTAgMTRoMXYxSDB6TTQgMTRoMXYxSDR6TTEwIDE0aDF2MUgxMHpNMTQgMTRoMXYxSDE0ek0yMCAxNGgxdjFIMjB6TTI0IDE0aDF2MUgyNHpNMzAgMTRoMXYxSDMwek0zNCAxNGgxdjFIMzR6Ii8+PC9zdmc+');
-            opacity: 0.2;
-            pointer-events: none;
-        }
-
-        /* KONTUR GARIS TOPOGRAFI YANG LEBIH BESAR DAN FUTURISTIK */
         .contour-overlay {
             position: fixed;
             top: 0;
@@ -57,20 +45,18 @@
             height: 100%;
             z-index: -1;
             pointer-events: none;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 800'%3E%3Cpath fill='none' stroke='%23FACC15' stroke-width='0.8' stroke-opacity='0.15' d='M100,100 Q250,80 350,150 T550,200 T750,180 T950,220 T1100,250'/%3E%3Cpath fill='none' stroke='%23FACC15' stroke-width='0.8' stroke-opacity='0.15' d='M100,130 Q260,110 370,180 T560,230 T770,210 T970,250 T1120,280'/%3E%3Cpath fill='none' stroke='%23FACC15' stroke-width='0.8' stroke-opacity='0.15' d='M100,160 Q270,140 390,210 T580,260 T790,240 T990,280 T1120,310'/%3E%3Cpath fill='none' stroke='%23FACC15' stroke-width='0.8' stroke-opacity='0.15' d='M100,190 Q280,170 410,240 T600,290 T810,270 T1010,310 T1120,340'/%3E%3Cpath fill='none' stroke='%23FACC15' stroke-width='0.8' stroke-opacity='0.15' d='M100,220 Q290,200 430,270 T620,320 T830,300 T1030,340 T1120,370'/%3E%3Cpath fill='none' stroke='%23FACC15' stroke-width='0.8' stroke-opacity='0.15' d='M100,250 Q300,230 450,300 T640,350 T850,330 T1050,370 T1120,400'/%3E%3Cpath fill='none' stroke='%23FACC15' stroke-width='0.8' stroke-opacity='0.15' d='M150,400 Q300,380 420,430 T600,470 T800,450 T980,490 T1100,520'/%3E%3Cpath fill='none' stroke='%23FACC15' stroke-width='0.8' stroke-opacity='0.15' d='M150,430 Q310,410 440,460 T620,500 T820,480 T1000,520 T1100,550'/%3E%3Cpath fill='none' stroke='%23FACC15' stroke-width='0.8' stroke-opacity='0.15' d='M150,460 Q320,440 460,490 T640,530 T840,510 T1020,550 T1100,580'/%3E%3Cpath fill='none' stroke='%23FACC15' stroke-width='0.8' stroke-opacity='0.15' d='M150,490 Q330,470 480,520 T660,560 T860,540 T1040,580 T1100,610'/%3E%3Cpath fill='none' stroke='%23FACC15' stroke-width='0.8' stroke-opacity='0.15' d='M150,520 Q340,500 500,550 T680,590 T880,570 T1060,610 T1100,640'/%3E%3Cpath fill='none' stroke='%23FACC15' stroke-width='0.8' stroke-opacity='0.15' d='M150,550 Q350,530 520,580 T700,620 T900,600 T1080,640 T1100,670'/%3E%3Cpath fill='none' stroke='%23FACC15' stroke-width='1.2' stroke-opacity='0.2' d='M50,700 Q200,650 350,680 T550,650 T750,700 T950,680 T1150,720'/%3E%3Cpath fill='none' stroke='%23FACC15' stroke-width='1.2' stroke-opacity='0.2' d='M50,730 Q210,680 370,710 T570,680 T770,730 T970,710 T1150,750'/%3E%3Cpath fill='none' stroke='%23FACC15' stroke-width='1.2' stroke-opacity='0.2' d='M50,760 Q220,710 390,740 T590,710 T790,760 T990,740 T1150,780'/%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 800'%3E%3Cpath fill='none' stroke='%23FACC15' stroke-width='0.8' stroke-opacity='0.15' d='M100,100 Q250,80 350,150 T550,200 T750,180 T950,220 T1100,250'/%3E%3Cpath fill='none' stroke='%23FACC15' stroke-width='0.8' stroke-opacity='0.15' d='M100,130 Q260,110 370,180 T560,230 T770,210 T970,250 T1120,280'/%3E%3Cpath fill='none' stroke='%23FACC15' stroke-width='0.8' stroke-opacity='0.15' d='M100,160 Q270,140 390,210 T580,260 T790,240 T990,280 T1120,310'/%3E%3Cpath fill='none' stroke='%23FACC15' stroke-width='0.8' stroke-opacity='0.15' d='M100,190 Q280,170 410,240 T600,290 T810,270 T1010,310 T1120,340'/%3E%3Cpath fill='none' stroke='%23FACC15' stroke-width='0.8' stroke-opacity='0.15' d='M100,220 Q290,200 430,270 T620,320 T830,300 T1030,340 T1120,370'/%3E%3Cpath fill='none' stroke='%23FACC15' stroke-width='0.8' stroke-opacity='0.15' d='M100,250 Q300,230 450,300 T640,350 T850,330 T1050,370 T1120,400'/%3E%3Cpath fill='none' stroke='%23FACC15' stroke-width='0.8' stroke-opacity='0.15' d='M150,400 Q300,380 420,430 T600,470 T800,450 T980,490 T1100,520'/%3E%3Cpath fill='none' stroke='%23FACC15' stroke-width='0.8' stroke-opacity='0.15' d='M150,430 Q310,410 440,460 T620,500 T820,480 T1000,520 T1100,550'/%3E%3Cpath fill='none' stroke='%23FACC15' stroke-width='0.8' stroke-opacity='0.15' d='M150,460 Q320,440 460,490 T640,530 T840,510 T1020,550 T1100,580'/%3E%3Cpath fill='none' stroke='%23FACC15' stroke-width='0.8' stroke-opacity='0.15' d='M150,490 Q330,470 480,520 T660,560 T860,540 T1040,580 T1100,610'/%3E%3Cpath fill='none' stroke='%23FACC15' stroke-width='0.8' stroke-opacity='0.15' d='M150,520 Q340,500 500,550 T680,590 T880,570 T1060,610 T1100,640'/%3E%3Cpath fill='none' stroke='%23FACC15' stroke-width='0.8' stroke-opacity='0.15' d='M150,550 Q350,530 520,580 T700,620 T900,600 T1080,640 T1100,670'/%3E%3C/svg%3E");
             background-repeat: no-repeat;
             background-size: cover;
             background-position: center;
             animation: subtleMove 30s linear infinite alternate;
         }
 
-        /* efek pergerakan halus kontur */
         @keyframes subtleMove {
             0% { transform: scale(1) translateX(0) translateY(0); opacity: 0.6; }
             100% { transform: scale(1.05) translateX(1%) translateY(1%); opacity: 0.9; }
         }
 
-        /* GARIS AKTIF (glow line) */
         .glow-line {
             position: fixed;
             top: 0;
@@ -336,11 +322,132 @@
             right: -150px;
         }
 
+        /* Struktur Organisasi - di bawah footer */
+        .struktur-wrapper {
+            margin-top: 60px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(250, 204, 21, 0.3);
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            border-left: 5px solid #FACC15;
+            padding-left: 20px;
+            color: #FACC15;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .kabid-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 50px;
+        }
+
+        .kabid-card {
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(14px);
+            border-radius: 2rem;
+            border: 2px solid #FACC15;
+            padding: 30px 40px;
+            text-align: center;
+            max-width: 380px;
+            width: 100%;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 30px rgba(250, 204, 21, 0.2);
+        }
+
+        .kabid-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 0 40px rgba(250, 204, 21, 0.4);
+        }
+
+
+
+        .jabatan-utama {
+            font-size: 0.9rem;
+            color: #FACC15;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+
+        .nama-pejabat {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .pangkat {
+            font-size: 0.8rem;
+            color: #BBB;
+        }
+
+        .subordinates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
+            margin-bottom: 40px;
+        }
+
+        .staff-card {
+            background: rgba(0, 0, 0, 0.65);
+            backdrop-filter: blur(12px);
+            border-radius: 1.5rem;
+            border: 1px solid rgba(250, 204, 21, 0.4);
+            padding: 24px;
+            transition: all 0.3s ease;
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .staff-card:hover {
+            transform: translateY(-5px);
+            border-color: #FACC15;
+            box-shadow: 0 0 18px rgba(250,204,21,0.2);
+        }
+
+
+
+        .staff-info {
+            flex: 1;
+        }
+
+        .staff-nama {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #FACC15;
+            margin-bottom: 4px;
+        }
+
+        .staff-jabatan {
+            font-size: 0.85rem;
+            color: #DDD;
+            margin-bottom: 6px;
+            font-weight: 500;
+        }
+
+        .staff-golongan {
+            font-size: 0.7rem;
+            color: #999;
+        }
+
+        .divider-custom {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #FACC15, #FACC15, transparent);
+            margin: 40px 0 20px;
+        }
+
         @media (max-width: 780px) {
             .container { padding: 0 20px; }
             .navbar { flex-direction: column; align-items: center; }
             .hero h1 { font-size: 2.3rem; }
-            .contour-overlay { background-size: cover; }
+            .staff-card { flex-direction: column; text-align: center; }
+
+            .kabid-card { padding: 20px; }
         }
 
         ::-webkit-scrollbar { width: 5px; }
@@ -351,7 +458,6 @@
 <body>
 
 <div class="bg-futuristic"></div>
-<!-- LAYER KONTUR TOPOGRAFI MODERN -->
 <div class="contour-overlay"></div>
 <div class="glow-line"></div>
 <div class="floating-shape"></div>
@@ -384,7 +490,7 @@
         <div class="sub">Dinas PUPR | Inovasi Tata Ruang, GIS & Arsip Digital Berbasis Wilayah</div>
     </div>
 
-    <!-- TUPOKSI BIDANG TATA RUANG -->
+    <!-- ================= TUPOKSI BIDANG TATA RUANG ================= -->
     <div id="tupoksi" data-aos="fade-right">
         <h2 style="font-size: 2rem; margin-bottom: 20px; border-left: 5px solid #FACC15; padding-left: 20px; color:#FACC15;">Tugas & Fungsi Bidang Tata Ruang</h2>
         <div class="tupoksi-grid">
@@ -411,7 +517,7 @@
         </div>
     </div>
 
-    <!-- APLIKASI UNGGULAN -->
+    <!-- APLIKASI UNGGULAN: SIPAMANDAR GIS & Sistem Arsip -->
     <div id="layanan" class="apps-grid">
         <div class="glass-card app-card" data-aos="flip-left">
             <i class="fas fa-map-marked-alt" style="font-size: 3rem; background: linear-gradient(145deg, #FACC15, #FFD966); background-clip: text; -webkit-background-clip: text; color: transparent;"></i>
@@ -434,7 +540,7 @@
         <div class="info-item"><div class="info-number">24/7</div><div>Akses Modern</div></div>
     </div>
 
-    <!-- PETA LOKASI KANTOR PUPR MAJENE -->
+    <!-- ================= PETA LOKASI KANTOR PUPR MAJENE ================= -->
     <div id="peta-lokasi" data-aos="fade-up">
         <h2 style="font-size: 1.8rem; margin-bottom: 20px; border-left: 5px solid #FACC15; padding-left: 20px; color:#FACC15;"><i class="fas fa-map-pin"></i> Peta Lokasi Kantor Dinas PUPR Kab. Majene</h2>
         <div class="glass-card map-container">
@@ -445,14 +551,14 @@
         </p>
     </div>
 
-    <!-- Kontak & Footer -->
+    <!-- Kontak -->
     <div id="kontak" class="glass-card" style="padding: 40px 30px; margin: 50px 0 40px; text-align: center;" data-aos="zoom-in">
         <i class="fas fa-building" style="font-size: 2.4rem; margin-bottom: 10px; color: #FACC15;"></i>
         <h3 style="color:#FACC15;">Dinas Pekerjaan Umum dan Penataan Ruang Kabupaten Majene</h3>
         <p style="margin: 12px 0; color:#DDD;">Jl. Jenderal Sudirman No. 45, Banggae, Kab. Majene, Sulawesi Barat 91411</p>
         <div style="display: flex; gap: 20px; justify-content: center; margin-top: 20px; flex-wrap:wrap;">
             <span><i class="fas fa-phone-alt"></i> (0422) 22145</span>
-            <span><i class="fas fa-envelope"></i> petarungmajene@gmail.com</span>
+            <span><i class="fas fa-envelope"></i> pupr@majenekab.go.id</span>
         </div>
         <div style="margin-top: 24px;">
             <a href="#" style="color:#FACC15; margin: 0 12px;"><i class="fab fa-twitter"></i></a>
@@ -465,6 +571,153 @@
         © 2026 Dinas PUPR Kab. Majene - Portal Tata Ruang Masa Depan | SIPAMANDAR GIS & Arsip Digital Tata Ruang <br>
         Sinergi untuk Majene yang Tertata, Modern, dan Berkelanjutan.
     </div>
+
+    <!-- ================= STRUKTUR ORGANISASI (DITARUH DI PALING BAWAH) ================= -->
+    <div class="struktur-wrapper" data-aos="fade-up">
+        <div class="section-title">
+            <i class="fas fa-sitemap"></i> 
+            <span>Struktur Organisasi Bidang Penataan Ruang</span>
+        </div>
+
+        <!-- LEVEL 1 — KEPALA BIDANG -->
+        <div class="kabid-container" data-aos="zoom-in" data-aos-duration="800">
+            <div class="kabid-card">
+                <div class="jabatan-utama"><i class="fas fa-star-of-life"></i> KEPALA BIDANG PENATAAN RUANG</div>
+                <div class="nama-pejabat">ANDI SUARDI, ST</div>
+                <div class="pangkat">NIP. 19700209 200212 1 006</div>
+                <div style="margin-top: 16px; font-size: 0.8rem; color:#FACC15;"><i class="fas fa-map-marked-alt"></i> Kepala Bidang Penataan Ruang</div>
+            </div>
+        </div>
+
+        <!-- Connector vertical -->
+        <div style="display:flex; justify-content:center;">
+            <div style="width:2px; height:40px; background: linear-gradient(to bottom, #FACC15, #2a4a80);"></div>
+        </div>
+
+        <!-- LEVEL 2 — FUNGSIONAL AHLI MUDA -->
+        <div class="kabid-container" data-aos="zoom-in" data-aos-delay="100">
+            <div class="kabid-card" style="border-color: rgba(250,204,21,0.5); max-width:340px; box-shadow: 0 0 20px rgba(250,204,21,0.12);">
+                <div class="jabatan-utama" style="font-size:0.78rem;"><i class="fas fa-user-graduate"></i> FUNGSIONAL</div>
+                <div class="nama-pejabat" style="font-size:1.3rem;">HELVIAH, SP.</div>
+                <div class="pangkat">NIP. 197604172007012023</div>
+                <div style="margin-top: 12px; font-size: 0.78rem; color:#FACC15;"><i class="fas fa-drafting-compass"></i> Penata Ruang Ahli Muda</div>
+            </div>
+        </div>
+
+        <!-- Connector vertical -->
+        <div style="display:flex; justify-content:center;">
+            <div style="width:2px; height:40px; background: linear-gradient(to bottom, #a08030, #2a4a80);"></div>
+        </div>
+
+        <!-- Divider label -->
+        <div style="display:flex; align-items:center; gap:14px; margin: 0 0 24px; width:100%;" data-aos="fade-up">
+            <div style="flex:1; height:1px; background: linear-gradient(90deg, transparent, rgba(250,204,21,0.3));"></div>
+            <span style="font-size:11px; letter-spacing:3px; color:rgba(250,204,21,0.5); text-transform:uppercase; white-space:nowrap;">Staff &amp; Fungsional</span>
+            <div style="flex:1; height:1px; background: linear-gradient(90deg, rgba(250,204,21,0.3), transparent);"></div>
+        </div>
+
+        <!-- STAFF GRID — 9 orang -->
+        <div class="subordinates-grid" data-aos="fade-up" data-aos-delay="150">
+
+            <!-- 1. M. NUR AMIN -->
+            <div class="staff-card">
+                <div class="staff-info">
+                    <div class="staff-nama">M. NUR AMIN, S.T.</div>
+                    <div class="staff-jabatan"><i class="fas fa-drafting-compass"></i> Penata Ruang Ahli Pertama</div>
+                    <div class="staff-golongan">NIP. 199109192019031007</div>
+                    <div style="margin-top: 6px; font-size: 0.7rem; color:#FACC15;">Fungsional</div>
+                </div>
+            </div>
+
+            <!-- 2. FITRI AMALIA -->
+            <div class="staff-card">
+                <div class="staff-info">
+                    <div class="staff-nama">FITRI AMALIA, S.T.</div>
+                    <div class="staff-jabatan"><i class="fas fa-drafting-compass"></i> Penata Ruang Ahli Pertama</div>
+                    <div class="staff-golongan">NIP. 198403042019032005</div>
+                    <div style="margin-top: 6px; font-size: 0.7rem; color:#FACC15;">Fungsional</div>
+                </div>
+            </div>
+
+            <!-- 3. DESYITA MASYKUR -->
+            <div class="staff-card">
+                <div class="staff-info">
+                    <div class="staff-nama">DESYITA MASYKUR</div>
+                    <div class="staff-jabatan"><i class="fas fa-server"></i> Pengadm. Sistem Informasi Pengendalian Pembangunan</div>
+                    <div class="staff-golongan">NIP. 197707312007012016</div>
+                    <div style="margin-top: 6px; font-size: 0.7rem; color:#FACC15;">Fungsional</div>
+                </div>
+            </div>
+
+            <!-- 4. MUSDALIFAH YUSUF -->
+            <div class="staff-card">
+                <div class="staff-info">
+                    <div class="staff-nama">MUSDALIFAH YUSUF, S.PWK</div>
+                    <div class="staff-jabatan"><i class="fas fa-map"></i> Penyusun Rencana Tata Ruang</div>
+                    <div class="staff-golongan">NIP. 199807102022032019</div>
+                    <div style="margin-top: 6px; font-size: 0.7rem; color:#FACC15;">Fungsional</div>
+                </div>
+            </div>
+
+            <!-- 5. MUHAMMAD FADEL NUR -->
+            <div class="staff-card">
+                <div class="staff-info">
+                    <div class="staff-nama">MUHAMMAD FADEL NUR, S.PWK</div>
+                    <div class="staff-jabatan"><i class="fas fa-building"></i> Penata Kelola Bangunan Gedung dan Kawasan Permukiman</div>
+                    <div class="staff-golongan">NIP. 19980527 202504 1003</div>
+                    <div style="margin-top: 6px; font-size: 0.7rem; color:#FACC15;">Fungsional</div>
+                </div>
+            </div>
+
+            <!-- 6. NAJMAH HAMZAH -->
+            <div class="staff-card">
+                <div class="staff-info">
+                    <div class="staff-nama">NAJMAH HAMZAH, ST.</div>
+                    <div class="staff-jabatan"><i class="fas fa-drafting-compass"></i> Penata Ruang Ahli Pertama</div>
+                    <div class="staff-golongan">NIP. 199006132023212034</div>
+                    <div style="margin-top: 6px; font-size: 0.7rem; color:#FACC15;">Fungsional</div>
+                </div>
+            </div>
+
+            <!-- 7. MURNIATI -->
+            <div class="staff-card">
+                <div class="staff-info">
+                    <div class="staff-nama">MURNIATI</div>
+                    <div class="staff-jabatan"><i class="fas fa-user"></i> Staf</div>
+                    <div class="staff-golongan">&nbsp;</div>
+                    <div style="margin-top: 6px; font-size: 0.7rem; color:#FACC15;">Staf</div>
+                </div>
+            </div>
+
+            <!-- 8. MANA -->
+            <div class="staff-card">
+                <div class="staff-info">
+                    <div class="staff-nama">MANA</div>
+                    <div class="staff-jabatan"><i class="fas fa-user"></i> Staf</div>
+                    <div class="staff-golongan">&nbsp;</div>
+                    <div style="margin-top: 6px; font-size: 0.7rem; color:#FACC15;">Staf</div>
+                </div>
+            </div>
+
+            <!-- 9. IRBAT -->
+            <div class="staff-card">
+                <div class="staff-info">
+                    <div class="staff-nama">IRBAT</div>
+                    <div class="staff-jabatan"><i class="fas fa-user"></i> Staf</div>
+                    <div class="staff-golongan">&nbsp;</div>
+                    <div style="margin-top: 6px; font-size: 0.7rem; color:#FACC15;">Staf</div>
+                </div>
+            </div>
+
+        </div><!-- /subordinates-grid -->
+
+        <div style="display: flex; justify-content: center; margin: 20px 0 40px;">
+            <div class="glass-card" style="padding: 20px 30px; text-align: center; max-width: 600px;">
+                <i class="fas fa-users" style="color:#FACC15; font-size: 2rem; margin-bottom: 10px;"></i>
+                <p style="font-size: 0.9rem;">Seluruh perangkat Bidang Penataan Ruang berkomitmen mewujudkan Majene yang tertata, modern, dan berkelanjutan melalui integrasi data spasial, pengendalian pemanfaatan ruang, serta digitalisasi arsip tata ruang.</p>
+            </div>
+        </div>
+    </div>
 </div>
 
 <!-- Leaflet JS -->
@@ -475,18 +728,15 @@
 <script>
     AOS.init({ duration: 900, once: true });
 
-    // Koordinat Kantor PUPR Majene (Jl. Jenderal Sudirman, Banggae)
     var kantorLatLng = [-3.5405, 118.9650];
     var map = L.map('map-kantor').setView(kantorLatLng, 17);
     
-    // Tile layer gaya gelap agar cocok dengan tema hitam-kuning
     L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> & CartoDB',
         subdomains: 'abcd',
         maxZoom: 19
     }).addTo(map);
     
-    // Marker custom dengan tema kuning-hitam
     var customIcon = L.divIcon({
         html: '<div style="background: #000000; border-radius: 50%; border: 3px solid #FACC15; padding: 8px; box-shadow: 0 0 20px #FACC15;"><i class="fas fa-building" style="color: #FACC15; font-size: 20px;"></i></div>',
         iconSize: [40, 40],
@@ -496,7 +746,6 @@
     var marker = L.marker(kantorLatLng, { icon: customIcon }).addTo(map);
     marker.bindPopup("<b style='color:#FACC15;'>DINAS PUPR KAB. MAJENE</b><br/>Jl. Jenderal Sudirman No. 45, Banggae<br/>Kantor Penataan Ruang & Cipta Karya").openPopup();
     
-    // Menambahkan lingkaran radius aksen kuning
     L.circle(kantorLatLng, {
         color: '#FACC15',
         weight: 2,
@@ -506,7 +755,6 @@
         radius: 200
     }).addTo(map);
     
-    // Tambahan polyline dekoratif
     var latlngs = [
         [-3.5390, 118.9640],
         [-3.5405, 118.9650],
@@ -514,7 +762,6 @@
     ];
     L.polyline(latlngs, { color: '#FACC15', weight: 2, opacity: 0.5, dashArray: '5, 8' }).addTo(map);
     
-    // Fallback logo jika image error
     document.querySelectorAll('img').forEach(img => {
         img.addEventListener('error', function() {
             if(this.src.includes('Logo_Kabupaten_Majene') || this.src.includes('Logo_Kementerian_PUPR')) {
@@ -531,7 +778,6 @@
         });
     });
     
-    // Smooth scroll internal
     document.querySelectorAll('.nav-links a').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             const href = this.getAttribute('href');
