@@ -453,6 +453,211 @@
         ::-webkit-scrollbar { width: 5px; }
         ::-webkit-scrollbar-track { background: #0a0a0a; }
         ::-webkit-scrollbar-thumb { background: #FACC15; border-radius: 10px; }
+
+        /* ===== PELAYANAN PBG & KKPR ===== */
+        .pelayanan-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+            gap: 30px;
+            margin: 40px 0 50px;
+        }
+
+        .pelayanan-card {
+            padding: 32px 30px;
+            text-align: left;
+        }
+
+        .pelayanan-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 14px;
+        }
+
+        .pelayanan-icon {
+            font-size: 1.8rem;
+            width: 56px;
+            height: 56px;
+            min-width: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 16px;
+            background: rgba(250, 204, 21, 0.1);
+            border: 1px solid rgba(250, 204, 21, 0.5);
+            color: #FACC15;
+        }
+
+        .pelayanan-card h3 {
+            font-size: 1.35rem;
+            color: #FACC15;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        .pelayanan-card .singkatan {
+            font-size: 0.72rem;
+            color: #999;
+            letter-spacing: 1px;
+        }
+
+        .pelayanan-desc {
+            color: #D1D5DB;
+            font-size: 0.92rem;
+            line-height: 1.6;
+            margin-bottom: 22px;
+        }
+
+        .alur-label {
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: rgba(250, 204, 21, 0.7);
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .alur-label::before {
+            content: '';
+            width: 18px;
+            height: 1px;
+            background: rgba(250, 204, 21, 0.5);
+        }
+
+        .alur-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .alur-step {
+            display: flex;
+            gap: 16px;
+            position: relative;
+            padding-bottom: 22px;
+        }
+
+        .alur-step:last-child {
+            padding-bottom: 0;
+        }
+
+        .alur-step:not(:last-child)::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 32px;
+            bottom: 0;
+            width: 1px;
+            background: linear-gradient(to bottom, rgba(250,204,21,0.6), rgba(250,204,21,0.1));
+        }
+
+        .alur-step-num {
+            min-width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: #000;
+            border: 1.5px solid #FACC15;
+            color: #FACC15;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.85rem;
+            z-index: 1;
+            flex-shrink: 0;
+        }
+
+        .alur-step-text {
+            padding-top: 4px;
+        }
+
+        .alur-step-text strong {
+            display: block;
+            font-size: 0.92rem;
+            color: #F5F5F5;
+            margin-bottom: 2px;
+        }
+
+        .alur-step-text span {
+            font-size: 0.8rem;
+            color: #AAA;
+            line-height: 1.5;
+        }
+
+        .pelayanan-cta {
+            margin-top: 24px;
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        /* ===== KONTAK PELAYANAN ===== */
+        .kontak-layanan-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
+            margin-top: 24px;
+        }
+
+        .kontak-person-card {
+            padding: 24px 22px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            text-align: left;
+        }
+
+        .kontak-person-avatar {
+            width: 54px;
+            height: 54px;
+            min-width: 54px;
+            border-radius: 50%;
+            background: linear-gradient(145deg, #FACC15, #EAB308);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            color: #000;
+        }
+
+        .kontak-person-nama {
+            font-weight: 700;
+            color: #FACC15;
+            font-size: 1rem;
+            margin-bottom: 2px;
+        }
+
+        .kontak-person-jabatan {
+            font-size: 0.75rem;
+            color: #999;
+            margin-bottom: 8px;
+        }
+
+        .kontak-person-wa {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #F5F5F5;
+            text-decoration: none;
+            font-size: 0.88rem;
+            font-weight: 600;
+            transition: 0.2s;
+        }
+
+        .kontak-person-wa:hover {
+            color: #FACC15;
+        }
+
+        .kontak-person-wa i {
+            color: #25D366;
+        }
+
+        @media (max-width: 780px) {
+            .pelayanan-grid { grid-template-columns: 1fr; }
+            .kontak-person-card { flex-direction: column; text-align: center; }
+        }
     </style>
 </head>
 <body>
@@ -478,6 +683,7 @@
         <div class="nav-links">
             <a href="#home">Beranda</a>
             <a href="#tupoksi">Tupoksi</a>
+            <a href="#pelayanan">Pelayanan</a>
             <a href="#layanan">Sistem</a>
             <a href="#peta-lokasi">Peta Kantor</a>
             <a href="#kontak">Kontak</a>
@@ -513,6 +719,117 @@
                 <div class="tupoksi-icon"><i class="fas fa-archive"></i></div>
                 <h3>Arsip & Dokumentasi Ruang</h3>
                 <p>Digitalisasi dokumen peraturan, peta dasar, dan arsip tata ruang untuk tata kelola terintegrasi.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= PELAYANAN PBG & KKPR ================= -->
+    <div id="pelayanan" data-aos="fade-right">
+        <h2 style="font-size: 2rem; margin-bottom: 8px; border-left: 5px solid #FACC15; padding-left: 20px; color:#FACC15;">Pelayanan Perizinan Tata Ruang</h2>
+        <p style="padding-left: 25px; color:#AAA; font-size:0.95rem; margin-bottom: 10px;">Layanan Persetujuan Bangunan Gedung (PBG) dan Kesesuaian Kegiatan Pemanfaatan Ruang (KKPR) untuk masyarakat, pelaku usaha, dan pemohon izin di Kabupaten Majene.</p>
+
+        <div class="pelayanan-grid">
+            <!-- PBG -->
+            <div class="glass-card pelayanan-card" data-aos="fade-up">
+                <div class="pelayanan-header">
+                    <div class="pelayanan-icon"><i class="fas fa-city"></i></div>
+                    <div>
+                        <h3>Persetujuan Bangunan Gedung</h3>
+                        <div class="singkatan">PBG</div>
+                    </div>
+                </div>
+                <div class="pelayanan-desc">
+                    PBG adalah perizinan yang diberikan kepada pemilik bangunan gedung untuk membangun baru, mengubah, memperluas, mengurangi, dan/atau merawat bangunan gedung sesuai dengan standar teknis bangunan gedung. PBG menggantikan Izin Mendirikan Bangunan (IMB) dan menjadi syarat wajib sebelum konstruksi dimulai.
+                </div>
+                <div class="alur-label">Alur Pengurusan PBG</div>
+                <div class="alur-steps">
+                    <div class="alur-step">
+                        <div class="alur-step-num">1</div>
+                        <div class="alur-step-text"><strong>Pendaftaran Permohonan</strong><span>Pemohon mengajukan permohonan PBG melalui sistem SIMBG/PTSP dengan melengkapi data pemohon dan data teknis bangunan.</span></div>
+                    </div>
+                    <div class="alur-step">
+                        <div class="alur-step-num">2</div>
+                        <div class="alur-step-text"><strong>Kelengkapan Dokumen</strong><span>Melengkapi dokumen rencana teknis, dokumen kepemilikan tanah, dan data pendukung lainnya.</span></div>
+                    </div>
+                    <div class="alur-step">
+                        <div class="alur-step-num">3</div>
+                        <div class="alur-step-text"><strong>Verifikasi &amp; Konsultasi</strong><span>Tim teknis Dinas PUPR memeriksa kesesuaian dokumen dengan standar teknis dan tata ruang yang berlaku.</span></div>
+                    </div>
+                    <div class="alur-step">
+                        <div class="alur-step-num">4</div>
+                        <div class="alur-step-text"><strong>Pemeriksaan Teknis (TPA/TPT)</strong><span>Penilaian oleh Tim Profesi Ahli/Tim Penilai Teknis untuk memastikan pemenuhan standar keselamatan bangunan.</span></div>
+                    </div>
+                    <div class="alur-step">
+                        <div class="alur-step-num">5</div>
+                        <div class="alur-step-text"><strong>Penerbitan PBG</strong><span>Setelah dinyatakan sesuai, dokumen PBG diterbitkan dan dapat diunduh oleh pemohon.</span></div>
+                    </div>
+                </div>
+                <div class="pelayanan-cta">
+                    <a href="https://simbg.pu.go.id/" target="_blank" class="btn-future">Ajukan PBG <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <!-- KKPR -->
+            <div class="glass-card pelayanan-card" data-aos="fade-up" data-aos-delay="120">
+                <div class="pelayanan-header">
+                    <div class="pelayanan-icon"><i class="fas fa-map-marked-alt"></i></div>
+                    <div>
+                        <h3>Kesesuaian Kegiatan Pemanfaatan Ruang</h3>
+                        <div class="singkatan">KKPR</div>
+                    </div>
+                </div>
+                <div class="pelayanan-desc">
+                    KKPR adalah dokumen yang menyatakan kesesuaian rencana kegiatan pemanfaatan ruang dengan Rencana Tata Ruang Wilayah (RTRW) dan/atau Rencana Detail Tata Ruang (RDTR). KKPR menjadi dasar dan syarat awal sebelum pemohon mengurus perizinan berusaha maupun PBG.
+                </div>
+                <div class="alur-label">Alur Pengurusan KKPR</div>
+                <div class="alur-steps">
+                    <div class="alur-step">
+                        <div class="alur-step-num">1</div>
+                        <div class="alur-step-text"><strong>Pengajuan Permohonan</strong><span>Pemohon mengajukan permohonan KKPR melalui sistem OSS-RBA dengan menyertakan titik lokasi dan rencana kegiatan.</span></div>
+                    </div>
+                    <div class="alur-step">
+                        <div class="alur-step-num">2</div>
+                        <div class="alur-step-text"><strong>Verifikasi Lokasi &amp; Tata Ruang</strong><span>Bidang Penataan Ruang memeriksa kesesuaian lokasi dengan RTRW/RDTR dan peta zonasi Kabupaten Majene.</span></div>
+                    </div>
+                    <div class="alur-step">
+                        <div class="alur-step-num">3</div>
+                        <div class="alur-step-text"><strong>Peninjauan Lapangan (bila diperlukan)</strong><span>Tim melakukan pengecekan lapangan untuk memastikan kondisi eksisting sesuai permohonan.</span></div>
+                    </div>
+                    <div class="alur-step">
+                        <div class="alur-step-num">4</div>
+                        <div class="alur-step-text"><strong>Penilaian &amp; Rekomendasi</strong><span>Penyusunan pertimbangan teknis kesesuaian ruang oleh Bidang Penataan Ruang.</span></div>
+                    </div>
+                    <div class="alur-step">
+                        <div class="alur-step-num">5</div>
+                        <div class="alur-step-text"><strong>Penerbitan Dokumen KKPR</strong><span>Dokumen KKPR terbit dan dapat digunakan sebagai syarat perizinan berusaha maupun PBG.</span></div>
+                    </div>
+                </div>
+                <div class="pelayanan-cta">
+                    <a href="https://oss.go.id/" target="_blank" class="btn-future">Ajukan KKPR <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- KONTAK LAYANAN -->
+        <div class="glass-card" style="padding: 30px 30px 34px; margin-bottom: 20px;" data-aos="fade-up">
+            <div class="alur-label" style="margin-bottom: 20px;">Kontak Layanan PBG &amp; KKPR</div>
+            <div class="kontak-layanan-grid">
+                <div class="glass-card kontak-person-card">
+                    <div class="kontak-person-avatar"><i class="fas fa-user"></i></div>
+                    <div>
+                        <div class="kontak-person-nama">HELVIAH, SP.</div>
+                        <div class="kontak-person-jabatan">Petugas Pelayanan Tata Ruang</div>
+                        <a class="kontak-person-wa" href="https://wa.me/6282194333902" target="_blank"><i class="fab fa-whatsapp"></i> 0821-9433-3902</a>
+                    </div>
+                </div>
+                <div class="glass-card kontak-person-card">
+                    <div class="kontak-person-avatar"><i class="fas fa-user"></i></div>
+                    <div>
+                        <div class="kontak-person-nama">M. NUR AMIN, S.T.</div>
+                        <div class="kontak-person-jabatan">Petugas Pelayanan Tata Ruang</div>
+                        <a class="kontak-person-wa" href="https://wa.me/6282375412050" target="_blank"><i class="fab fa-whatsapp"></i> 0823-7541-2050</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -559,6 +876,13 @@
         <div style="display: flex; gap: 20px; justify-content: center; margin-top: 20px; flex-wrap:wrap;">
             <span><i class="fas fa-phone-alt"></i> (0422) 22145</span>
             <span><i class="fas fa-envelope"></i> pupr@majenekab.go.id</span>
+        </div>
+        <div style="margin-top: 24px; padding-top: 20px; border-top: 1px solid rgba(250,204,21,0.2);">
+            <p style="font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; color: rgba(250,204,21,0.6); margin-bottom: 14px;">Kontak Pelayanan PBG &amp; KKPR</p>
+            <div style="display: flex; gap: 24px; justify-content: center; flex-wrap:wrap;">
+                <a href="https://wa.me/6282194333902" target="_blank" class="kontak-person-wa" style="justify-content:center;"><i class="fab fa-whatsapp"></i> Helviah, S.P. — 0821-9433-3902</a>
+                <a href="https://wa.me/6282375412050" target="_blank" class="kontak-person-wa" style="justify-content:center;"><i class="fab fa-whatsapp"></i> M. Nur Amin, S.T. — 0823-7541-2050</a>
+            </div>
         </div>
         <div style="margin-top: 24px;">
             <a href="#" style="color:#FACC15; margin: 0 12px;"><i class="fab fa-twitter"></i></a>
