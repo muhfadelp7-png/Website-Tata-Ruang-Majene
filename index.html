@@ -864,7 +864,7 @@
             <div id="map-kantor"></div>
         </div>
         <p style="text-align: center; margin-top: 12px; font-size: 0.9rem; background: rgba(0,0,0,0.5); display: inline-block; width:100%; padding: 8px; border-radius: 50px;">
-            <i class="fas fa-location-dot" style="color:#FACC15;"></i> <strong>Alamat Kantor:</strong> Jl. Jenderal Sudirman No. 45, Kecamatan Banggae, Kabupaten Majene, Sulawesi Barat 91411 (Kompleks Perkantoran Pemda Majene)
+            <i class="fas fa-location-dot" style="color:#FACC15;"></i> <strong>Alamat Kantor:</strong> CWQV+Q7F, Jl. Poros Majene - Mamuju, Totoli, Kec. Banggae, Kabupaten Majene, Sulawesi Barat
         </p>
     </div>
 
@@ -872,10 +872,10 @@
     <div id="kontak" class="glass-card" style="padding: 40px 30px; margin: 50px 0 40px; text-align: center;" data-aos="zoom-in">
         <i class="fas fa-building" style="font-size: 2.4rem; margin-bottom: 10px; color: #FACC15;"></i>
         <h3 style="color:#FACC15;">Dinas Pekerjaan Umum dan Penataan Ruang Kabupaten Majene</h3>
-        <p style="margin: 12px 0; color:#DDD;">Jl. Jenderal Sudirman No. 45, Banggae, Kab. Majene, Sulawesi Barat 91411</p>
+        <p style="margin: 12px 0; color:#DDD;">CWQV+Q7F, Jl. Poros Majene - Mamuju, Totoli, Kec. Banggae, Kabupaten Majene, Sulawesi Barat</p>
         <div style="display: flex; gap: 20px; justify-content: center; margin-top: 20px; flex-wrap:wrap;">
             <span><i class="fas fa-phone-alt"></i> (0422) 22145</span>
-            <span><i class="fas fa-envelope"></i> pupr@majenekab.go.id</span>
+            <span><i class="fas fa-envelope"></i> dpuprmajene@gmail.com</span>
         </div>
         <div style="margin-top: 24px; padding-top: 20px; border-top: 1px solid rgba(250,204,21,0.2);">
             <p style="font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; color: rgba(250,204,21,0.6); margin-bottom: 14px;">Kontak Pelayanan PBG &amp; KKPR</p>
@@ -1052,7 +1052,7 @@
 <script>
     AOS.init({ duration: 900, once: true });
 
-    var kantorLatLng = [-3.5405, 118.9650];
+    var kantorLatLng = [-3.560460226369059, 118.94317722413403];
     var map = L.map('map-kantor').setView(kantorLatLng, 17);
     
     L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
@@ -1068,7 +1068,7 @@
     });
     
     var marker = L.marker(kantorLatLng, { icon: customIcon }).addTo(map);
-    marker.bindPopup("<b style='color:#FACC15;'>DINAS PUPR KAB. MAJENE</b><br/>Jl. Jenderal Sudirman No. 45, Banggae<br/>Kantor Penataan Ruang & Cipta Karya").openPopup();
+    marker.bindPopup("<b style='color:#FACC15;'>DINAS PUPR KAB. MAJENE</b><br/>CWQV+Q7F, Jl. Poros Majene - Mamuju, Totoli<br/>Kec. Banggae, Kab. Majene<br/>Kantor Penataan Ruang & Cipta Karya").openPopup();
     
     L.circle(kantorLatLng, {
         color: '#FACC15',
@@ -1080,9 +1080,9 @@
     }).addTo(map);
     
     var latlngs = [
-        [-3.5390, 118.9640],
-        [-3.5405, 118.9650],
-        [-3.5415, 118.9662]
+        [-3.559060226369059, 118.94167722413403],
+        [-3.560460226369059, 118.94317722413403],
+        [-3.561560226369059, 118.94437722413403]
     ];
     L.polyline(latlngs, { color: '#FACC15', weight: 2, opacity: 0.5, dashArray: '5, 8' }).addTo(map);
     
